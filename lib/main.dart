@@ -70,38 +70,41 @@ class _NavigationContainerState extends State<NavigationContainer> {
         throw UnimplementedError('no widget for $navigationIndex');
     }
 
-    return Scaffold(
-      body: Row(
-        children: [
-          SafeArea(
-            child: NavigationRail(
-              extended: true,
-              destinations: [
-                NavigationRailDestination(
-                  icon: Icon(Icons.home),
-                  label: Text('Home')
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.favorite),
-                  label: Text('Favourites')
-                )
-              ],
-              selectedIndex: navigationIndex,
-              onDestinationSelected: (value) {
-                setState(() {
-                  navigationIndex = value;
-                });
-              },
-            )
-          ),
-          Expanded(
-              child: Container(
-                color: Theme.of(context).colorScheme.primaryContainer,
-                child: page,
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        body: Row(
+          children: [
+            SafeArea(
+              child: NavigationRail(
+                extended: constraints.maxWidth >= 600,
+                destinations: [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.home),
+                    label: Text('Home')
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.favorite),
+                    label: Text('Favourites')
+                  )
+                ],
+                selectedIndex: navigationIndex,
+                onDestinationSelected: (value) {
+                  setState(() {
+                    navigationIndex = value;
+                  });
+                },
               )
-          )
-        ],
-      ),
+            ),
+            Expanded(
+                child: Container(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: page,
+                )
+            )
+          ],
+        ),
+      );
+      }
     );
   }
 }
