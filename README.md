@@ -1,8 +1,11 @@
-# sunkissed
+# Sunkissed
+> My first flutter app from official tutorial https://codelabs.developers.google.com/codelabs/flutter-codelab-first#0
 
-Sunkissed
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src=".github/assets/images/sunkissed_gh_cover.png" alt="sunkissed_gh_cover">
+</div>
 
-## Getting Started
+## Resource
 
 This project is a starting point for a Flutter application.
 
